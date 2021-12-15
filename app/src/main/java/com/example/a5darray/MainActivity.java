@@ -3,7 +3,9 @@ package com.example.a5darray;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -24,13 +26,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Button btn = (Button)findViewById(R.id.btn);
+       /* Button btn = (Button)findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"Hai premuto il tasto",Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
 
+        listaStati.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String nome = (String)listaStati.getItemAtPosition(position);
+                Log.d("errori nostri", "posizione" + position);
+                Toast.makeText(getApplicationContext(),nome,Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
